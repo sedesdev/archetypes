@@ -1,6 +1,0 @@
-spring:
-  datasource:
-    jndi-name: java:jboss/datasources/exemploDS
-usa:
-  filtro:
-    seguranca: true
