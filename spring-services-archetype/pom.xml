@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>br.jus.trese</groupId>
-  <artifactId>exemplo-archetype</artifactId>
+  <artifactId>spring-services-archetype</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>maven-archetype</packaging>
 
-  <name>exemplo-archetype</name>
+  <name>spring-services-archetype</name>
 
   <build>
     <extensions>
@@ -28,7 +28,7 @@
     </pluginManagement>
   </build>
 
-  <description>Projeto de demonstração da arquitetura Back-end COSIS</description>
+  <description>Archetype de projetos que utilizam Spring Boot para fornecer Webservices</description>
 
   <url>https://projects.spring.io/spring-boot/#/spring-boot-starter-parent/exemplo</url>
 
