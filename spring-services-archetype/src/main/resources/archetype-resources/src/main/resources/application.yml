@@ -1,0 +1,53 @@
+host:
+  autenticador:
+    webservice: http://homologa-sedes.tre-se.gov.br:8085
+logging:
+  level:
+    com:
+      alfred: INFO
+    io:
+      swagger:
+        models:
+          parameters:
+            AbstractSerializableParameter: ERROR
+    org:
+      hibernate: INFO
+      springframework:
+        web: INFO
+    root: INFO
+provedor: iPleno
+servico:
+  verifica:
+    autorizacao: /auth/temAutorizacao
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  mail:
+    host: localhost
+    port: 25
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
+    protocol: smtp
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: '@activatedProperties@'
+swagger:
+  basePackage: br.jus.trese.exemplo
+  contact:
+    email: ''
+    name: SEDES
+    url: https://github.com/sedesdev/
+  description: A presente API é disponibilizada como forma de exemplificação de como trabalhar com webservices REST documentado com Swagger
+  license: Open Source
+  licenseUrl: https://www.apache.org/licenses/LICENSE-2.0
+  termsOfServiceUrl: https://www.example.com/api
+  title: API de Exemplo arquitetura back-end COSIS
+  version: 1.0.0
