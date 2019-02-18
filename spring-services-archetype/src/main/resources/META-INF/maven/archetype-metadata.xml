@@ -8,7 +8,7 @@
       </requiredProperty>
       <requiredProperty key="artifactId"/>
       <requiredProperty key="version">
-          <defaultValue>0.1-SNAPSHOT</defaultValue>
+          <defaultValue>0.0.1-SNAPSHOT</defaultValue>
       </requiredProperty>
       <requiredProperty key="package">
           <defaultValue>br.jus.trese</defaultValue>
