@@ -38,13 +38,13 @@ public class EntidadeExemploService {
     @Transactional
     public EntidadeExemplo salvar(EntidadeExemplo entidadeExemplo) {
         return repositorioEntidadeExemplo
-                .save(EntidadeExemplo.builder().nome(entidadeExemplo.getNome()).tipoOrigemDados(1).build());
+                .save(EntidadeExemplo.builder().nome(entidadeExemplo.getNome()).build());
     }
 
     @Transactional
     public EntidadeExemplo salvar(EntidadeExemploInfo entidadeExemplo) {
         return repositorioEntidadeExemplo
-                .save(EntidadeExemplo.builder().nome(entidadeExemplo.getNome()).tipoOrigemDados(1).build());
+                .save(EntidadeExemplo.builder().nome(entidadeExemplo.getNome()).build());
     }
 
     @Transactional

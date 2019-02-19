@@ -3,11 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.${artifactId}.webservice.info;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import ${package}.base.infra.spring.webservice.info.Info;
-import ${package}.base.infra.spring.webservice.info.Mapeador;
 import ${package}.${artifactId}.dominio.modelo.EntidadeExemplo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -67,9 +67,9 @@ public class EntidadeExemploController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public EntidadeExemploInfo salvar(
 			@ApiParam(value = "Dados da entidade exemplo a ser criado") 
-			@RequestBody EntidadeExemploInfa entidadeExemploInfo) throws ItemNaoEncontradoException {
+			@RequestBody EntidadeExemploInfo entidadeExemploInfo) throws ItemNaoEncontradoException {
 
-		EntidadeExempla entidadeExemplo = entidadeExemploService.salvar(entidadeExemploInfo);
+		EntidadeExemplo entidadeExemplo = entidadeExemploService.salvar(entidadeExemploInfo);
 
 		EntidadeExemploInfo elementoInfo = new EntidadeExemploInfo(entidadeExemplo,
 				ControllerLinkBuilder.methodOn(this.getClass()).recuperar(entidadeExemplo.getId()));
@@ -110,7 +110,7 @@ public class EntidadeExemploController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void atualizar(@ApiParam(value = "Identificador da entidade exemplo") @PathVariable("id") Long id,
 			@ApiParam(value = "Dados da entidade exemplo a serem atualizados", 
-			type = "EntidadeExemplo") @RequestBody EntidadeExemploInfa entidadeExemplo)
+			type = "EntidadeExemplo") @RequestBody EntidadeExemploInfo entidadeExemplo)
 			throws ItemNaoEncontradoException {
 
 		EntidadeExemplo elemento = entidadeExemploService.recuperarPelo(id);
