@@ -5,17 +5,17 @@ package ${package}.dominio.repositorio;
 
 import java.util.List;
 
-import ${package}.dominio.modelo.ElementoDespesa;
+import ${package}.dominio.modelo.EntidadeExemplo;
 
 /**
- * Interface para uma consulta personalizada no Elemento Despesa
+ * Interface para uma consulta personalizada na entidade exemplo
  * que deverá ser estendida no repositório que será utilizado nos
  * services.
  * Deverá vir com o sufixo "Custom"
  * 
  * @author SEDES
  */
-public interface ElementoDespesaRepositoryCustom {
+public interface EntidadeExemploRepositoryCustom {
 
-	List<ElementoDespesa> recuperarElementoDespesaPor(String nome);
+	List<EntidadeExemplo> recuperarEntidadeExemploPor(String nome);
 }

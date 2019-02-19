@@ -12,29 +12,29 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import ${package}.dominio.modelo.ElementoDespesa;
+import ${package}.dominio.modelo.EntidadeExemplo;
 
 /**
- * Representa a implementacao de um repositorio Customizado.
+ * Representa a implementação de um repositorio Customizado.
  * Deve seguir a nomenclatura com o sufixo "Impl"
  * @author SEDES
  */
 @Repository
 @Transactional(readOnly = true)
-public class ElementoDespesaRepositoryImpl implements ElementoDespesaRepositoryCustom {
+public class EntidadeExemploRepositoryImpl implements EntidadeExemploRepositoryCustom {
 
 	@PersistenceContext
 	EntityManager entityManager;
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ElementoDespesa> recuperarElementoDespesaPor(String nome) {
+	public List<EntidadeExemplo> recuperarEntidadeExemploPor(String nome) {
 		Query query = entityManager.createNativeQuery(
-				"SELECT ed.* FROM ADMGESTOC.ELEMENTO ed " +
+				"SELECT ed.* FROM NOME_ESQUEMA.NOME_TABELA ed " +
 		        "WHERE ed.NM_ELEMENTO LIKE ?",
-				ElementoDespesa.class);
+				EntidadeExemplo.class);
 		query.setParameter(1, nome + "%");
-		return (List<ElementoDespesa>) query.getResultList();
+		return (List<EntidadeExemplo>) query.getResultList();
 	}
 
 }

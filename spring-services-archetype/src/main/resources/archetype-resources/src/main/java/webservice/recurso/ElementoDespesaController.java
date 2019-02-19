@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ${groupId}.base.infra.spring.email.EmailService;
 import ${groupId}.base.infra.spring.webservice.exception.ItemNaoEncontradoException;
-import ${package}.dominio.modelo.ElementoDespesa;
-import ${package}.dominio.servico.ElementoDespesaService;
-import ${package}.webservice.info.ElementoDespesaInfo;
-import ${package}.webservice.info.ElementosDespesaInfo;
+import ${package}.dominio.modelo.EntidadeExemplo;
+import ${package}.dominio.servico.EntidadeExemploService;
+import ${package}.webservice.info.EntidadeExemploInfo;
+import ${package}.webservice.info.EntidadesExemploInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -33,135 +33,135 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 /**
- * Controlador para acesso aos Elementos de Despesa via API REST. Cada método
+ * Controlador para acesso às entidades exemplo via API REST. Cada método
  * representa uma operação que pode ser feita
  * 
  * @author SEDES
  *
  */
-@Api(value = "API Elemento Despesa", produces = "application/json")
+@Api(value = "API Entidade Exemplo", produces = "application/json")
 @RestController
-@RequestMapping("/rest/v1/elementosDespesa")
-public class ElementoDespesaController {
+@RequestMapping("/rest/v1/entidadesExemplo")
+public class EntidadeExemploController {
 
-	private ElementoDespesaService elementoDespesaService;
+	private EntidadeExemploService entidadeExemploService;
 
 	@Autowired
 	public EmailService emailService;
 
-	// Injecao de dependencia no Spring
+	// Injeção de dependência no Spring
 	// É uma alternativa ao uso do Autowired
-	public ElementoDespesaController(ElementoDespesaService elementoDespesaService) {
-		this.elementoDespesaService = elementoDespesaService;
+	public EntidadeExemploController(EntidadeExemploService entidadeExemploService) {
+		this.entidadeExemploService = entidadeExemploService;
 	}
 
-	@ApiOperation(value = "Criação de elemento de despesa", response = ElementoDespesaInfo.class, 
+	@ApiOperation(value = "Criação de entidade exemplo", response = EntidadeExemploInfo.class, 
 	        produces = "application/json")
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Elemento de despesa criado", response = ElementoDespesaInfo.class),
+			@ApiResponse(code = 200, message = "Entidade exemplo criada", response = EntidadeExemploInfo.class),
 			@ApiResponse(code = 401, message = "Acesso não autorizado"),
 			@ApiResponse(code = 403, message = "Proibido acesso ao recurso"),
-			@ApiResponse(code = 404, message = "Elemento de despesa não encontrado"),
+			@ApiResponse(code = 404, message = "Entidade exemplo não encontrado"),
 			@ApiResponse(code = 500, message = "Erro interno no servidor") })
 	@PostMapping("")
 	@ResponseStatus(HttpStatus.CREATED)
-	public ElementoDespesaInfo salvar(
-			@ApiParam(value = "Dados do elemento de despesa a ser criado") 
-			@RequestBody ElementoDespesaInfo elementoDespesaInfo) throws ItemNaoEncontradoException {
+	public EntidadeExemploInfo salvar(
+			@ApiParam(value = "Dados da entidade exemplo a ser criado") 
+			@RequestBody EntidadeExemploInfa entidadeExemploInfo) throws ItemNaoEncontradoException {
 
-		ElementoDespesa elementoDespesa = elementoDespesaService.salvar(elementoDespesaInfo);
+		EntidadeExempla entidadeExemplo = entidadeExemploService.salvar(entidadeExemploInfo);
 
-		ElementoDespesaInfo elementoInfo = new ElementoDespesaInfo(elementoDespesa,
-				ControllerLinkBuilder.methodOn(this.getClass()).recuperar(elementoDespesa.getId()));
+		EntidadeExemploInfo elementoInfo = new EntidadeExemploInfo(entidadeExemplo,
+				ControllerLinkBuilder.methodOn(this.getClass()).recuperar(entidadeExemplo.getId()));
 
-		emailService.enviarMensagemSimples("sedes@tre-se.jus.br", "rcardosom@gmail.com", "CRIAÇÃO DE USUÁRIO",
+		emailService.enviarMensagemSimples("sedes@tre-se.jus.br", "sedes@tre-se.jus.br", "CRIAÇÃO DE USUÁRIO",
 				"Usuário criado com sucesso");
 
 		return elementoInfo;
 	}
 
-	@ApiOperation(value = "Retorna um elemento de despesa pelo ID", response = ElementoDespesaInfo.class, 
+	@ApiOperation(value = "Retorna uma entidade exemplo pelo ID", response = EntidadeExemploInfo.class, 
 	        produces = "application/json")
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Elemento de despesa retornado", response = ElementoDespesaInfo.class),
+			@ApiResponse(code = 200, message = "Entidade exemplo retornada", response = EntidadeExemploInfo.class),
 			@ApiResponse(code = 401, message = "Acesso não autorizado"),
 			@ApiResponse(code = 403, message = "Proibido acesso ao recurso"),
-			@ApiResponse(code = 404, message = "Elemento de despesa não encontrado"),
+			@ApiResponse(code = 404, message = "Entidade exemplo não encontrado"),
 			@ApiResponse(code = 500, message = "Erro interno no servidor") })
 	@GetMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public ElementoDespesaInfo recuperar(
-			@ApiParam(value = "Identificador do elemento de despesa") @PathVariable("id") Long id)
+	public EntidadeExemploInfo recuperar(
+			@ApiParam(value = "Identificador da entidade exemplo") @PathVariable("id") Long id)
 			throws ItemNaoEncontradoException {
 
-		return new ElementoDespesaInfo(elementoDespesaService.recuperarPelo(id),
+		return new EntidadeExemploInfo(entidadeExemploService.recuperarPelo(id),
 				ControllerLinkBuilder.methodOn(this.getClass()).recuperar(id));
 	}
 
-	@ApiOperation(value = "Atualiza um elemento de despesa identificado pelo ID", 
-	        notes = "Um cliente atualiza um elemento", response = ElementoDespesaInfo.class)
+	@ApiOperation(value = "Atualiza uma entidade exemplo identificada pelo ID", 
+	        notes = "Um cliente atualiza um elemento", response = EntidadeExemploInfo.class)
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Elemento de despesa atualizado", response = ElementoDespesaInfo.class),
+			@ApiResponse(code = 200, message = "Entidade exemplo atualizada", response = EntidadeExemploInfo.class),
 			@ApiResponse(code = 401, message = "Acesso não autorizado"),
 			@ApiResponse(code = 403, message = "Proibido acesso ao recurso"),
-			@ApiResponse(code = 404, message = "Elemento de despesa não encontrado para atualizar"),
+			@ApiResponse(code = 404, message = "Entidade exemplo não encontrado para atualizar"),
 			@ApiResponse(code = 500, message = "Erro interno no servidor") })
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void atualizar(@ApiParam(value = "Identificador do elemento de despesa") @PathVariable("id") Long id,
-			@ApiParam(value = "Dados do elemento de despesa a serem atualizados", 
-			type = "ElementoDespesa") @RequestBody ElementoDespesaInfo elementoDespesa)
+	public void atualizar(@ApiParam(value = "Identificador da entidade exemplo") @PathVariable("id") Long id,
+			@ApiParam(value = "Dados da entidade exemplo a serem atualizados", 
+			type = "EntidadeExemplo") @RequestBody EntidadeExemploInfa entidadeExemplo)
 			throws ItemNaoEncontradoException {
 
-		ElementoDespesa elemento = elementoDespesaService.recuperarPelo(id);
-		elemento.setNome(elementoDespesa.getNome());
-		elementoDespesaService.salvar(elemento);
+		EntidadeExemplo elemento = entidadeExemploService.recuperarPelo(id);
+		elemento.setNome(entidadeExemplo.getNome());
+		entidadeExemploService.salvar(elemento);
 	}
 
-	@ApiOperation(value = "Consulta todos os elementos de despesa ou por parte do nome", 
-	        response = ElementoDespesaInfo.class, produces = "application/json")
+	@ApiOperation(value = "Consulta todas as entidades exemplo ou por parte do nome", 
+	        response = EntidadeExemploInfo.class, produces = "application/json")
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Lista de elementos de despesa retornado", 
-			        response = ElementosDespesaInfo.class),
+			@ApiResponse(code = 200, message = "Lista de entidades exemplo retornada", 
+			        response = EntidadesExemploInfo.class),
 			@ApiResponse(code = 401, message = "Acesso não autorizado"),
 			@ApiResponse(code = 403, message = "Proibido acesso ao recurso"),
-			@ApiResponse(code = 404, message = "Elemento de despesa não encontrado"),
+			@ApiResponse(code = 404, message = "Entidade exemplo não encontrada"),
 			@ApiResponse(code = 500, message = "Erro interno no servidor") })
 	@GetMapping("")
 	@ResponseStatus(HttpStatus.OK)
-	public ElementosDespesaInfo consulta(
-			@ApiParam(name = "nome", value = "Nome ou parte dele para busca do(s) elemento(s)", required = false) 
+	public EntidadesExemploInfo consulta(
+			@ApiParam(name = "nome", value = "Nome ou parte dele para busca da(s) entidade(s)", required = false) 
 			@RequestParam("nome") Optional<String> nome)
 			throws ItemNaoEncontradoException {
 	    
-		List<ElementoDespesa> elementosDespesa = null;
-		ElementosDespesaInfo metodo = null;
+		List<EntidadeExemplo> entidadesExemplo = null;
+		EntidadesExemploInfo metodo = null;
 
 		if (nome.isPresent()) {
-			elementosDespesa = elementoDespesaService.recuperarMostrandoElementoMaterial(nome.get());
+			entidadesExemplo = entidadeExemploService.recuperarPeloNome(nome.get());
 			metodo = ControllerLinkBuilder.methodOn(this.getClass()).consulta(nome);
 		} else {
-			elementosDespesa = elementoDespesaService.recuperarTodosMostrandoElementoMaterial();
+			entidadesExemplo = entidadeExemploService.recuperarTodos();
 			metodo = ControllerLinkBuilder.methodOn(this.getClass()).consulta(null);
 		}
 
-		return new ElementosDespesaInfo(elementosDespesa, metodo);
+		return new EntidadesExemploInfo(entidadesExemplo, metodo);
 	}
 
-	@ApiOperation(value = "Remove um elemento de despesa identificado pelo ID", response = ElementoDespesaInfo.class)
+	@ApiOperation(value = "Remove uma entidade exemplo identificada pelo ID", response = EntidadeExemploInfo.class)
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Elemento de despesa removido", response = ElementoDespesaInfo.class),
+			@ApiResponse(code = 200, message = "Entidade exemplo removida", response = EntidadeExemploInfo.class),
 			@ApiResponse(code = 401, message = "Acesso não autorizado"),
 			@ApiResponse(code = 403, message = "Proibido acesso ao recurso"),
-			@ApiResponse(code = 404, message = "Elemento de despesa não encontrado para remover"),
+			@ApiResponse(code = 404, message = "Entidade exemplo não encontrada para remover"),
 			@ApiResponse(code = 500, message = "Erro interno no servidor") })
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@ApiParam(value = "Identificador do elemento de despesa") @PathVariable("id") Long id)
+	public void remover(@ApiParam(value = "Identificador da entidade exemplo") @PathVariable("id") Long id)
 			throws ItemNaoEncontradoException {
 
-		if (elementoDespesaService.validaSePodeExcluir(ElementoDespesa.builder().id(id).build())) {
-			elementoDespesaService.apagarPelo(id);
+		if (entidadeExemploService.validaSePodeExcluir(EntidadeExemplo.builder().id(id).build())) {
+			entidadeExemploService.apagarPelo(id);
 		}
 	}
 }

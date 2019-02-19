@@ -1,13 +1,13 @@
 server:
   port: 8080
   servlet:
-    context-path: /exemplo
+    context-path: /${artifactId}
 spring:
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
-    password: gestoc01
-    url: jdbc:oracle:thin:@10.21.1.1:1521:treino
-    username: gestoc
+    password: senha
+    url: jdbc:oracle:thin:@IP:1521:SID
+    username: usuario
 usa:
   filtro:
     seguranca: true

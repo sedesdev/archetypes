@@ -113,7 +113,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-
+        
     </dependencies>
 
     <build>
@@ -153,7 +153,7 @@
             </activation>
             <properties>
                 <activatedProperties>dev</activatedProperties>
-                <start-class>br.jus.trese.exemplo.ExemploApplicationDesenv</start-class>
+                <start-class>br.jus.trese.${artifactId}.AppDesenv</start-class>
             </properties>            
             <dependencies>
                 <dependency>
@@ -168,7 +168,7 @@
             </activation>
             <properties>
                 <activatedProperties>jboss</activatedProperties>            
-                <start-class>br.jus.trese.exemplo.ExemploApplicationJBoss</start-class>
+                <start-class>br.jus.trese.${artifactId}.AppJBoss</start-class>
             </properties>
             <dependencies>                
                 <dependency>

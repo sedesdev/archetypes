@@ -8,11 +8,11 @@
         enabled="true" use-java-context="true" 
         pool-name="${artifactId}DS" use-ccm="true" spy="true">
 
-        <connection-url>jdbc:oracle:thin:@10.21.1.1:1521:treino</connection-url>
+        <connection-url>jdbc:oracle:thin:@IP:1521:SID</connection-url>
 		<driver>oracle</driver>
 		<security>
-			<user-name>gestoc</user-name>
-			<password>gestoc01</password>
+			<user-name>usuario</user-name>
+			<password>senha</password>
 		</security>
 		<pool>
 			<min-pool-size>1</min-pool-size>

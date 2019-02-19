@@ -29,24 +29,18 @@ import lombok.NoArgsConstructor;
  *
  */
 @Entity
-@Table(name = "ELEMENTO", schema = "ADMGESTOC")
+@Table(name = "NOME_TABELA", schema = "NOME_ESQUEMA")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ElementoDespesa implements Entidade {
+public class EntidadeExemplo implements Entidade {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_ELEMENTO")
-    @SequenceGenerator(name = "SQ_ELEMENTO", sequenceName = "SQ_ELEMENTO")
-    @Column(name = "SQ_ELEMENTO")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_TABELA")
+    @SequenceGenerator(name = "SQ_TABELA", sequenceName = "SQ_TABELA")
+    @Column(name = "SQ_ID")
     private Long id;
-
+	
     @Column(name = "NM_ELEMENTO")
     private String nome;
-
-    @Column(name = "TP_ORIGEM_DADOS")
-    private Integer tipoOrigemDados;
-
-    @OneToMany(mappedBy = "elementoDespesa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<SubElementoDespesa> subElementos;
 }

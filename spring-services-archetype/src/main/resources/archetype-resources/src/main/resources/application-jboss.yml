@@ -1,6 +1,6 @@
 spring:
   datasource:
-    jndi-name: java:jboss/datasources/exemploDS
+    jndi-name: java:jboss/datasources/${artifactId}DS
 usa:
   filtro:
     seguranca: true

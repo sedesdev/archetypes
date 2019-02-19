@@ -15,7 +15,7 @@ logging:
       springframework:
         web: INFO
     root: INFO
-provedor: iPleno
+provedor: ${artifactId}
 servico:
   verifica:
     autorizacao: /auth/temAutorizacao
