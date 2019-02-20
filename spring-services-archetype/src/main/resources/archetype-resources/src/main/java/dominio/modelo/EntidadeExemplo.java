@@ -3,7 +3,6 @@
 #set( $symbol_escape = '\' )
 package ${package}.dominio.modelo;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
