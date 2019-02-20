@@ -1,4 +1,4 @@
-#set( $symbol_pound = '#' )
+﻿#set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 package ${package}.dominio.servico;
@@ -65,4 +65,5 @@ public class EntidadeExemploService {
     public List<EntidadeExemplo> recuperarPeloNome(String nome) {
         return repositorioEntidadeExemplo.recuperarPeloNome(nome);
     }
+
 }
